@@ -23,4 +23,8 @@ public class WordService {
         return wordRepository.save(word);
     }
 
+    public  Word getWord(long id){
+        return  wordRepository.findById(id).get();
+    }
+
 }
