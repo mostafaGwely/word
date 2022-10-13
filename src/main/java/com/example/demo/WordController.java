@@ -1,12 +1,10 @@
-package com.example.demo.controller;
+package com.example.demo;
 
-import com.example.demo.entity.Word;
-import com.example.demo.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/words")
+@RequestMapping("/word")
 public class WordController {
     @Autowired
     private WordService wordService;
@@ -27,5 +25,10 @@ public class WordController {
     @GetMapping(path = "/{id}")
     public Word getWord(@PathVariable Long id){
         return wordService.getWord(id);
+    }
+
+    @GetMapping("/")
+    public String index() {
+        return "Hello there! I'm running.";
     }
 }
