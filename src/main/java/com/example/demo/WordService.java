@@ -5,6 +5,9 @@ import com.example.demo.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Random;
+
 @Service
 public class WordService {
 
@@ -25,6 +28,15 @@ public class WordService {
 
     public  Word getWord(long id){
         return  wordRepository.findById(id).get();
+    }
+
+
+    public Word getRandomWord(){
+        List<Word> all = wordRepository.findAll();
+
+        Random rand = new Random();
+        return all.get(rand.nextInt(all.size()));
+
     }
 
 }
