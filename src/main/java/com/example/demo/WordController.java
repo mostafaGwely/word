@@ -30,8 +30,15 @@ public class WordController {
 
     @GetMapping()
     public Word getWord(){
-
+    try{
         return wordService.getRandomWord();
+    }catch (Exception e){
+        Word w = new Word();
+        w.setWord("Error from server");
+        w.setDescription(e.getMessage());
+        return  w;
+    }
+
     }
 
 }
